@@ -1,0 +1,4 @@
+*:focus{
+  box-shadow: #ffd600 0 0 10px inset;
+  background-color: rgba(0,0,0,0.2);
+}

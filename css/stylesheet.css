@@ -1,0 +1,121 @@
+/* COLORS */
+.header__top-nav{
+  background-color: #484848;
+}
+.header__bottom-nav{
+  background-color: #a0a0a0;
+}
+.main__description {
+  background-color: #484848;
+}
+.main__description h1{
+  color: #efefef;
+}
+.main__description p{
+  color: #d9d9d9;
+}
+.main__link-block:nth-child(2){
+  background-color: #ffcf00;
+}
+.main__link-block:nth-child(2) a{
+
+}
+.main__link-block:nth-child(3){
+  background-color: #a0a0a0;
+}
+.main__link-block:nth-child(3) a {
+  color: white;
+}
+.main__link-block:nth-child(4){
+  background-color: #a0a0a0;
+}
+.main__link-block:nth-child(4) a{
+  color: white;
+}
+.main__link-block:nth-child(5){
+  background-color: #ffcf00;
+}
+.main__link-block:nth-child(5) a{
+
+}
+.main__link-block:nth-child(6){
+  background-color: #ffcf00;
+}
+.main__link-block:nth-child(7){
+  background-color: #a0a0a0;
+}
+.main__link-block:nth-child(7) a {
+
+}
+.main__link-block:nth-child(7) a {
+  color: white;
+}
+.footer nav{
+  background-color: #484848!important;
+}
+/* SIZING */
+.header__mid-block{
+  padding: 12px;
+}
+.header__mid-block img{
+  max-width: 250px;
+}
+.main__side-nav{
+  width: 340px;
+}
+.main__side-nav form{
+  width: 340px;
+}
+.carousel-wrapper .carousel-item{
+  height: 360px;
+}
+.main__description{
+  width: 100%;
+  padding: 12px;
+}
+.main__link-block:nth-child(1){
+  width: 100%;
+}
+.main__link-block{
+  width: 50%;
+  padding: 36px;
+}
+.main__link-block a{
+  display: block;
+  width: 100%;
+  font-size: 21px;
+  text-align: center;
+}
+.footer{
+  width: 100%;
+}
+/* LAYOUT */
+.header__mid-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px
+}
+.main__side-nav{
+  display: block!important;
+}
+.main__side-nav-inner ul{
+  display: flex;
+  flex-direction: column!important;
+  align-items: start;
+  justify-content: start;
+}
+.main__link-blocks{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
