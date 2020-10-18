@@ -1,4 +1,14 @@
-*:focus{
+#focused{
   box-shadow: #ffd600 0 0 10px inset;
   background-color: rgba(0,0,0,0.2);
+}
+.chosen{
+  box-shadow: #89ff40 0 0 10px inset!important;
+  background-color: rgba(137, 255, 64, 0.2)!important;
+}
+.hint:before{
+  content: attr(ctrlKey);
+  position:absolute;
+  top: 0;
+  left: 0;
 }
