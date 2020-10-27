@@ -1,5 +1,7 @@
 import Mousetrap from "mousetrap";
-import {controllableElems} from "../../hints/collections/controllable-elems";
+import {store} from "../../redux/store";
+import {addControllableChildren, addCurrentBlock} from "../../redux/actions";
+import {activationTagsNames} from "../collections/elems";
 
 export function setFocus(elem, key){
   if(!elem.style.position) elem.style.position = 'relative';
@@ -9,12 +11,18 @@ export function setFocus(elem, key){
     Mousetrap.bind(key, function() {
       elem.focus()
     });
-    controllableElems.push({elem, key});
   }
 }
 
-export function deactivateParent(elem) {
+export function deactivateCurrentBlock() {
+  const elem = store.getState().currentBlock;
   elem.removeAttribute('id');
   elem.classList.remove('chosen');
 }
 
+export function activateBlock(block){
+  store.dispatch(addCurrentBlock(block));
+  store.dispatch(addControllableChildren(Array.from(block.querySelectorAll([activationTagsNames]))));
+  block.classList.add('chosen');
+  //showHints()
+}

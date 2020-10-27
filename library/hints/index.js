@@ -1,27 +1,34 @@
-import {controllableElems} from "./collections/controllable-elems";
 import Mousetrap from "mousetrap";
+import {store} from '../redux/store'
 
 const hintClass = 'hint';
 
-export function getHints(){
-  controllableElems.map(item=>{
-    item.elem.classList.add(hintClass);
+export function setHints(){
+  store.getState().controllableElems.map(item=>{
+    item.classList.add(hintClass);
   })
 }
+
 export function removeHints(){
-  Array.from(document.querySelectorAll(hintClass)).map((elem)=>{
-    console.log(elem)
+  Array.from(document.querySelectorAll('.'+hintClass)).map((elem)=>{
     elem.classList.remove(hintClass)
-    console.log(elem)
+  });
+}
 
+function hintsOn() {
+  Mousetrap.bind('shift+q', ()=>{
+    setHints()
+    hintsOff()
   })
 }
 
-// styleElem.innerHTML = "#theDiv:before {background: black;}";
-(document.body.onload = function (){
+function hintsOff() {
   Mousetrap.bind('shift+q', ()=>{
-    getHints()
-    Mousetrap.bind('shift+q', ()=>removeHints())
+    removeHints()
+    hintsOn()
   })
+}
 
-})();
+export function showHints (){
+  hintsOn(hintsOff)
+}

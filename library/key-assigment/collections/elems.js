@@ -1,9 +1,15 @@
+import {store} from "../../redux/store";
+import {addAllElems, addNavBlocks} from "../../redux/actions";
 
 export const activationTagsNames = ['a', 'input', 'button'];
 
 export const getActivationTags = () => Array.from(document.querySelectorAll(activationTagsNames));
-export const getNavs = () => Array.from(document.querySelectorAll(['.nav', '.navbar-nav']));
-
 export const activationTags = [...getActivationTags()];
-export const navs = [...getNavs()];
-export const allElems = [...activationTags, ...navs];
+
+export const getNavs = () => {
+  const elems = Array.from(document.querySelectorAll(['.nav', '.navbar-nav']))
+
+  store.dispatch(addNavBlocks(elems))
+  store.dispatch(addAllElems([...elems, ...activationTags]))
+};
+
