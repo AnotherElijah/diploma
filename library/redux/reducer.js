@@ -9,7 +9,6 @@ import {
 import {store} from "./store";
 
 export function testReducer(state = [], action) {
-
   switch (action.type) {
     case ADD_ALL_ELEMS:
       return {...state, allElems: [...action.payload]};
@@ -24,6 +23,7 @@ export function testReducer(state = [], action) {
     case REMOVE_CONTROLLABLE_CHILDREN:
       return {...state, controllableChildren: []};
     default:
+
       return {...state}
   }
 }

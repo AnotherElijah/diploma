@@ -1,15 +1,23 @@
 import {store} from "../../redux/store";
 import {addAllElems, addNavBlocks} from "../../redux/actions";
 
-export const activationTagsNames = ['a', 'input', 'button'];
+class ActivationTags {
+  constructor() {
+    this.activationTagsNames = ['a', 'input', 'button'];
+    this.activationTags = Array.from(document.querySelectorAll(this.activationTagsNames));
+  }
+}
 
-export const getActivationTags = () => Array.from(document.querySelectorAll(activationTagsNames));
-export const activationTags = [...getActivationTags()];
+class Navs{
+  constructor(){
+    this.navs = Array.from(document.querySelectorAll(['.nav', '.navbar-nav']));
+    store.dispatch(addNavBlocks(this.navs));
+  }
+}
 
-export const getNavs = () => {
-  const elems = Array.from(document.querySelectorAll(['.nav', '.navbar-nav']))
+export const ActivationTagsInstance = new ActivationTags();
+export const NavsInstance = new Navs();
 
-  store.dispatch(addNavBlocks(elems))
-  store.dispatch(addAllElems([...elems, ...activationTags]))
-};
-
+export function dispatchAllElems(){
+  store.dispatch(addAllElems([...NavsInstance.navs, ...ActivationTagsInstance.activationTags]));
+}
