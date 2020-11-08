@@ -15,9 +15,21 @@ class Navs{
   }
 }
 
+class Carousels{
+  constructor(){
+    this.carousels = Array.from(document.querySelectorAll(['.carousel-inner']));
+    store.dispatch(addNavBlocks(this.carousels));
+  }
+}
+
 export const ActivationTagsInstance = new ActivationTags();
 export const NavsInstance = new Navs();
+export const CarouselsInstance = new Carousels();
 
 export function dispatchAllElems(){
-  store.dispatch(addAllElems([...NavsInstance.navs, ...ActivationTagsInstance.activationTags]));
+  store.dispatch(addAllElems([
+    ...NavsInstance.navs,
+    ...ActivationTagsInstance.activationTags,
+    ...CarouselsInstance.carousels,
+  ]));
 }

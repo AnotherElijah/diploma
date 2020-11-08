@@ -5,7 +5,8 @@ const initialState = {
   allElems: [],
   navBlocks: [],
   controllableChildren: [],
-  currentBlock: null
+  currentBlock: null,
+  hints: false,
 }
 
 export const store = createStore(testReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

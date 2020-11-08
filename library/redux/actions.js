@@ -5,6 +5,8 @@ export const ADD_ALL_ELEMS = 'ADD_ALL_ELEMS';
 export const ADD_CURRENT_BLOCK = 'ADD_CURRENT_BLOCK';
 export const REMOVE_CONTROLLABLE_CHILDREN = 'REMOVE_CONTROLLABLE_CHILDREN';
 export const REMOVE_CURRENT_BLOCK = 'REMOVE_CURRENT_BLOCK';
+export const HINTS_ON = 'HINTS_ON';
+export const HINTS_OFF = 'HINTS_OFF';
 
 export const addNavBlocks = (navBlocks = []) => {
   return {
@@ -32,14 +34,28 @@ export const addCurrentBlock = (block) => {
     type: ADD_CURRENT_BLOCK,
     payload: block
   }
-}
+};
+
 export const removeCurrentBlock = (block = []) => {
   return {
     type: REMOVE_CURRENT_BLOCK,
   }
 };
+
 export const removeControllableChildren = (controllableElements = []) => {
   return {
     type: REMOVE_CONTROLLABLE_CHILDREN,
+  }
+};
+
+export const hintsOn = () => {
+  return {
+    type: HINTS_ON
+  }
+};
+
+export const hintsOff = () => {
+  return {
+    type: HINTS_OFF
   }
 };

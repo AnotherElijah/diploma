@@ -3,10 +3,11 @@ import {
   ADD_CONTROLLABLE_CHILDREN,
   ADD_CURRENT_BLOCK,
   ADD_NAV_BLOCKS,
-  CLEAN_CONTROLLABLE_ELEMS, REMOVE_CONTROLLABLE_CHILDREN, REMOVE_CURRENT_BLOCK,
-  TEST
+  HINTS_OFF,
+  HINTS_ON,
+  REMOVE_CONTROLLABLE_CHILDREN,
+  REMOVE_CURRENT_BLOCK
 } from "./actions";
-import {store} from "./store";
 
 export function testReducer(state = [], action) {
   switch (action.type) {
@@ -22,8 +23,11 @@ export function testReducer(state = [], action) {
       return {...state, controllableChildren: [...action.payload]};
     case REMOVE_CONTROLLABLE_CHILDREN:
       return {...state, controllableChildren: []};
+    case HINTS_ON:
+      return {...state, hints: true};
+    case HINTS_OFF:
+      return {...state, hints: false};
     default:
-
       return {...state}
   }
 }

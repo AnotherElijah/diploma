@@ -1,53 +1,51 @@
 import Mousetrap from "mousetrap";
 import {store} from '../redux/store'
+import {hintsOn, hintsOff} from "../redux/actions";
 
 const hintClass = 'hint';
 
-export function setHints(controllableElems)
-{
+export function setHints(controllableElems) {
   controllableElems.map(item => {
     item.classList.add(hintClass);
   })
 }
 
-export function removeHints()
-{
+export function removeHints() {
   Array.from(document.querySelectorAll('.' + hintClass)).map((elem) => {
     elem.classList.remove(hintClass)
   });
 }
 
-export function hintsOn()
-{
+export function toggleHints() {
+  //TODO bag somewhere here
   Mousetrap.bind('shift+q', () => {
-    setHints()
-    hintsOff()
+    if(store.getState().hints){
+      removeHints()
+      return store.dispatch(hintsOff())
+    }
+    setHints(store.getState().controllableChildren === 0?store.getState().navBlocks:store.getState().controllableChildren)
+    store.dispatch(hintsOn())
   })
 }
 
-export function hintsOff()
-{
-  Mousetrap.bind('shift+q', () => {
-    removeHints()
-    hintsOn()
-  })
+
+export function handleHints() {
+  if(store.getState().hints){
+    toggleHints()
+    autoHints()
+  }
 }
 
-export function showHints()
-{
-  hintsOn(hintsOff)
-}
+store.subscribe(handleHints);
 
 export function autoHints() {
   const _store = store.getState()
-  if(_store.controllableChildren.length > 0){
+  if (_store.controllableChildren.length > 0) {
     removeHints()
     setHints(store.getState().controllableChildren)
   }
-  if(_store.controllableChildren.length === 0 && _store.navBlocks){
+  if (_store.controllableChildren.length === 0 && _store.navBlocks) {
     removeHints()
     setHints(store.getState().navBlocks)
   }
 }
-
-store.subscribe(autoHints);
