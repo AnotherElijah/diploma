@@ -15,7 +15,7 @@ function createNotification() {
   container.appendChild(button);
 
   button.onclick = () => {
-    container.classList.add('slide-up');
+    container.classList.add('slide-up')
     store.dispatch(hintsOn())
     setHints(store.getState().navBlocks)
   };

@@ -10,26 +10,30 @@ class ActivationTags {
 
 class Navs{
   constructor(){
-    this.navs = Array.from(document.querySelectorAll(['.nav', '.navbar-nav']));
-    store.dispatch(addNavBlocks(this.navs));
+    this.navs = Array.from(document.querySelectorAll(['.nav', '.navbar-nav', '.carousel-wrapper']));
+    this.freeElems = findFreeElems(AllActivationElemsInstance.elems)
+    store.dispatch(addNavBlocks([...this.navs, ...this.freeElems]));
   }
 }
 
-class Carousels{
+class AllActivationElems{
   constructor(){
-    this.carousels = Array.from(document.querySelectorAll(['.carousel-inner']));
-    store.dispatch(addNavBlocks(this.carousels));
+    this.elems = Array.from(document.querySelectorAll(['a', 'button']));
   }
 }
 
+const findFreeElems = (elems) => {
+  return elems.filter(elem=>elem.closest('.nav')===null&&elem.closest('.navbar-nav')===null&&elem.closest('.carousel-wrapper')===null)
+}
+
+export const AllActivationElemsInstance = new AllActivationElems();
 export const ActivationTagsInstance = new ActivationTags();
 export const NavsInstance = new Navs();
-export const CarouselsInstance = new Carousels();
+
 
 export function dispatchAllElems(){
   store.dispatch(addAllElems([
     ...NavsInstance.navs,
     ...ActivationTagsInstance.activationTags,
-    ...CarouselsInstance.carousels,
   ]));
 }

@@ -4,7 +4,10 @@ import {addControllableChildren, addCurrentBlock} from "../../redux/actions";
 import {ActivationTagsInstance} from "../collections/elems";
 
 export function setFocus(elem, key){
-  if(!elem.style.position) elem.style.position = 'relative';
+  if(!elem.style.position
+    && !elem.classList.contains('carousel-control-prev')
+    && !elem.classList.contains('carousel-control-next')
+  ) elem.style.position = 'relative';
 
   if(key){
     elem.setAttribute('ctrlKey', key);
@@ -21,8 +24,17 @@ export function deactivateCurrentBlock() {
 }
 
 export function activateBlock(block){
+  if(block.classList.contains('carousel-wrapper')){
+    Mousetrap.bind('left', ()=>{
+      block.querySelector('.carousel-control-prev').click()
+    })
+    Mousetrap.bind('right', ()=>{
+      block.querySelector('.carousel-control-next').click()
+    })
+  }else{
+    store.dispatch(addControllableChildren(Array.from(block.querySelectorAll([ActivationTagsInstance.activationTagsNames]))));
+  }
   store.dispatch(addCurrentBlock(block));
-  store.dispatch(addControllableChildren(Array.from(block.querySelectorAll([ActivationTagsInstance.activationTagsNames]))));
   block.classList.add('chosen');
   //showHints()
 }

@@ -6,14 +6,18 @@
   box-shadow: #89ff40 0 0 10px inset!important;
   background-color: rgba(137, 255, 64, 0.2)!important;
 }
+
+
 .hint:before{
+  display: block;
   content: attr(ctrlKey);
   position:absolute;
   top: 0;
   left: 0;
+  background-color: rgba(0,0,0,0.3)!important;
+  color: rgba(255, 255, 0, 0.7) !important;
+  padding: 2px 4px;
 }
-
-
 /* The element to apply the animation to */
 .notification {
   display: flex;
