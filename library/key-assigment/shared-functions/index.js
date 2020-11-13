@@ -3,6 +3,8 @@ import {store} from "../../redux/store";
 import {addControllableChildren, addCurrentBlock} from "../../redux/actions";
 import {ActivationTagsInstance} from "../collections/elems";
 
+const CLASS_CHOOSEN = 'chosen-ctrllib'
+
 export function setFocus(elem, key){
   if(!elem.style.position
     && !elem.classList.contains('carousel-control-prev')
@@ -20,7 +22,7 @@ export function setFocus(elem, key){
 export function deactivateCurrentBlock() {
   const elem = store.getState().currentBlock;
   elem.removeAttribute('id');
-  elem.classList.remove('chosen');
+  elem.classList.remove(CLASS_CHOOSEN);
 }
 
 export function activateBlock(block){
@@ -35,6 +37,6 @@ export function activateBlock(block){
     store.dispatch(addControllableChildren(Array.from(block.querySelectorAll([ActivationTagsInstance.activationTagsNames]))));
   }
   store.dispatch(addCurrentBlock(block));
-  block.classList.add('chosen');
+  block.classList.add(CLASS_CHOOSEN);
   //showHints()
 }

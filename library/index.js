@@ -6,46 +6,53 @@ import {keyAssignmentMain} from './key-assigment'
 import {keyBinding} from './key-assigment/events'
 import './notofication'
 import './run-up'
+import {hintsOn} from "./redux/actions";
+import {setHints} from "./hints";
+
 document.body.onload = function () {
+  Mousetrap.bind('shift+q', () => {
+    store.dispatch(hintsOn())
+    setHints(store.getState().navBlocks)
+  })
   let navBlocks;
   let controllableChildren;
 
   store.subscribe(
     () => {
-      if (store.getState().navBlocks) navBlocks = store.getState().navBlocks;
-      if (store.getState().controllableChildren) controllableChildren = store.getState().controllableChildren;
+      if (store.getState().hints === true) {
+        if (store.getState().navBlocks) navBlocks = store.getState().navBlocks;
+        if (store.getState().controllableChildren) controllableChildren = store.getState().controllableChildren;
 
-      if (navBlocks.length > 0) {
+        if (navBlocks.length > 0) {
 
-        /*Initiate keys*/
-        if (store.getState().allElems) {
-          keyBinding.deactivateTabindex(store.getState().allElems);
+          /*Initiate keys*/
+          if (store.getState().allElems) {
+            keyBinding.deactivateTabindex(store.getState().allElems);
+          }
+
+          keyBinding.assignTabIndex(navBlocks);
+          keyBinding.assignKeys(navBlocks, setFocus);
+
+          navBlocks.map(navBlock => {
+            navBlock.addEventListener('focus', () => {
+              keyAssignmentMain.onEnter(navBlock)
+            })
+          });
         }
 
-        keyBinding.assignTabIndex(navBlocks);
-        keyBinding.assignKeys(navBlocks, setFocus);
+        if (controllableChildren.length > 0) {
+          keyBinding.deactivateTabindex(store.getState().allElems);
+          keyBinding.assignTabIndex(controllableChildren);
+          keyBinding.removeKeys(navBlocks);
+          keyBinding.assignKeys(controllableChildren, setFocus);
 
-        navBlocks.map(navBlock => {
-          navBlock.addEventListener('focus', () => {
-            keyAssignmentMain.onEnter(navBlock)
+          Mousetrap.bind('escape', () => {
+            keyAssignmentMain.onEsc()
           })
-        });
-        //setHints()
-      }
-
-      if (controllableChildren.length > 0) {
-        //removeHints()
-        keyBinding.deactivateTabindex(store.getState().allElems);
-        keyBinding.assignTabIndex(controllableChildren);
-        keyBinding.removeKeys(navBlocks);
-        keyBinding.assignKeys(controllableChildren, setFocus);
-
-        Mousetrap.bind('escape', () => {
-          keyAssignmentMain.onEsc()
-        })
+        }
       }
     }
-
   );
   dispatchAllElems()
+
 };

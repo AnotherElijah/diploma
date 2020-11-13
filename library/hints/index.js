@@ -2,17 +2,17 @@ import Mousetrap from "mousetrap";
 import {store} from '../redux/store'
 import {hintsOn, hintsOff} from "../redux/actions";
 
-const hintClass = 'hint';
+const CLASS_HINT = 'hint-ctrtllib';
 
 export function setHints(controllableElems) {
   controllableElems.map(item => {
-    item.classList.add(hintClass);
+    item.classList.add(CLASS_HINT);
   })
 }
 
 export function removeHints() {
-  Array.from(document.querySelectorAll('.' + hintClass)).map((elem) => {
-    elem.classList.remove(hintClass)
+  Array.from(document.querySelectorAll('.' + CLASS_HINT)).map((elem) => {
+    elem.classList.remove(CLASS_HINT)
   });
 }
 
@@ -40,6 +40,7 @@ store.subscribe(handleHints);
 
 export function autoHints() {
   const _store = store.getState()
+  constHint()
   if (_store.controllableChildren.length > 0) {
     removeHints()
     setHints(store.getState().controllableChildren)
@@ -48,4 +49,12 @@ export function autoHints() {
     removeHints()
     setHints(store.getState().navBlocks)
   }
+}
+
+function constHint() {
+  const container = document.createElement("div");
+  container.classList.add("const-notification-ctrllib");
+  const node = document.createTextNode("Toggle hints: 'Tab'+'Q' U+2424 Toggle hints: 'Tab'+'Q'");
+  container.appendChild(node);
+  document.querySelector("body").prepend(container)
 }
