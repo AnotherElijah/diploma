@@ -7,7 +7,7 @@ import {keyBinding} from './key-assigment/events'
 import './notofication'
 import './run-up'
 import {hintsOn} from "./redux/actions";
-import {setHints} from "./hints";
+import {constHint, setHints} from "./hints";
 
 document.body.onload = function () {
   Mousetrap.bind('shift+q', () => {

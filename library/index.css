@@ -20,8 +20,8 @@
   position:absolute;
   top: 0;
   left: 0;
-  background-color: rgba(54, 49, 255, 0.48) !important;
-  color: rgba(255, 255, 0, 0.9) !important;
+  background-color: rgba(54, 49, 255, 0.5) !important;
+  color: rgb(255, 235, 0) !important;
   padding: 2px 4px;
   z-index: 999;
   border-radius: 4px;
@@ -74,7 +74,7 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  background-color: rgba(54, 49, 255, 0.48) !important;
+  background-color: rgba(54, 49, 255, 0.8) !important;
   color: rgba(255, 255, 0, 0.9) !important;
   font-size: 15px;
   padding: 4px 8px;

@@ -6,7 +6,7 @@ import {setHints} from "../hints";
 
 function createNotification() {
   const container = document.createElement("div");
-  const node = document.createTextNode("Type 'Tab'+'Q' to activate accessible navigation, or 'Run now' button");
+  const node = document.createTextNode("Type 'Shift'+'Q' to activate accessible navigation, or 'Run now' button");
   container.appendChild(node);
   container.classList.add('notification-ctrllib');
   const button1 = document.createElement("button");
