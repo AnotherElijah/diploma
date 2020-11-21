@@ -17,9 +17,7 @@
 </code>
 
 <h2>Step 2</h2>
-
-<p>Download the library:</p>
-<code>...</code>
+<a href="https://anotherelijah.github.io/ctrl-lib.zip">Download the library</a>
 
 <h2>Step 3</h2>
 
