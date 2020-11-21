@@ -4,7 +4,7 @@
 }
 *:focus{
   outline: 2px solid #ffe200;
-  box-shadow: #5166ff 0 0 10px inset!important;
+  box-shadow: rgba(54, 49, 255, 1) 0 0 10px inset!important;
 }
 .chosen-ctrllib{
   box-shadow: #09ff5f 0 0 10px inset!important;
@@ -20,7 +20,7 @@
   position:absolute;
   top: 0;
   left: 0;
-  background-color: rgba(54, 49, 255, 0.5) !important;
+  background-color: rgba(54, 49, 255, 1) !important;
   color: rgb(255, 235, 0) !important;
   padding: 2px 4px;
   z-index: 999;
@@ -43,7 +43,7 @@
   font-size: 15px;
 }
 .notification-btn-1-ctrllib{
-  background-color: #5166ff;
+  background-color: rgba(54, 49, 255, 1);
   color: white;
   border: 0;
   border-radius: 5px;
@@ -74,7 +74,7 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  background-color: rgba(54, 49, 255, 0.8) !important;
+  background-color: rgba(54, 49, 255, 1) !important;
   color: rgba(255, 255, 0, 0.9) !important;
   font-size: 15px;
   padding: 4px 8px;

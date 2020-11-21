@@ -17,8 +17,6 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "bootstrap": "^4.5.2",
-    "jquery": "^3.5.1",
-    "mousetrap": "^1.6.5",
-    "redux": "^4.0.5"
+    "jquery": "^3.5.1"
   }
 }

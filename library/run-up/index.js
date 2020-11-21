@@ -13,11 +13,10 @@ function crateElem (elem, path) {
     newElem.type = 'text/css';
     newElem.rel = 'stylesheet';
     newElem.href = path
-
   }
   return newElem
 }
 
-const newElem = crateElem('link', '/library/index.css');
+const newElem = crateElem('link', '/library/ctrllib-index.css');
 
 implementFiles('body', newElem);
