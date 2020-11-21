@@ -21,9 +21,12 @@
 <p>Download the library:</p>
 <code>...</code>
 
+<h2>Step 3</h2>
+
 Place the library in the root folder of your project (or next to your index.html file).
 
+<h2>Step 4 (optional)</h2>
+Run <code>npm install</code> to install all the library dependencies
 
-
-<h2>Step N (optional)</h2>
+<h2>Step 4 (optional)</h2>
 <p>All the hints styles are available in the /library/ctrllib-index.css</p>
